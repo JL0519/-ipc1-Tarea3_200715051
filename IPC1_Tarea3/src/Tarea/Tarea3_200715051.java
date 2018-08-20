@@ -7,7 +7,7 @@ public class Tarea3_200715051 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-	Scanner entrada = new Scanner(System.in);
+Scanner entrada = new Scanner(System.in);
 		
 		Scanner nomUsu = new Scanner(System.in);
 		
@@ -15,18 +15,26 @@ public class Tarea3_200715051 {
 		
 		Scanner entrada3 = new Scanner(System.in);
 		
-		int opcion,opcionUsu,OpcionCont,opcion3,opcionCal,contador,numbuscar;
+		Scanner entra1 = new Scanner(System.in);
+		
+		Scanner entra2 = new Scanner(System.in);
+		
+		int opcion,opcionUsu,OpcionCont,opcionProm,opcionCal,contador,numbuscar,num1,num2,num3;
 		
 		opcion=0;
 		opcionUsu=0;
 		opcionCal=0;
 		OpcionCont=0;
-		opcion3=0;
+		opcionProm=0;
+		
+		num1=0;
+		num2=0;
+		num3=0;
 		
 		System.out.println("IPC1_200715051");
 		System.out.println();
 		
-		do {
+		do {//MENU PRINCIPAL--------------------------------------------------------------------------------------------------------
 			
 		System.out.println("1. Usuarios.");
 		System.out.println("2. Contador de numeros repetido.");
@@ -39,7 +47,7 @@ public class Tarea3_200715051 {
 			
 		switch(opcion) {
 		
-		case 1:
+		case 1:// MENU USUARIOS-------------------------------------------------------------------------------------------------------
 			
 			opcionUsu=0;
 			
@@ -132,9 +140,9 @@ public class Tarea3_200715051 {
 			}while(opcionUsu!=4);
 			
 			
-		break;
+		break;//FIN MENU USUARIOS
 			
-		case 2:
+		case 2://MENU CONTADOR--------------------------------------------------------------------------------------------------------------
 			
 			numbuscar=0;
 			contador=0;
@@ -184,6 +192,10 @@ public class Tarea3_200715051 {
 			
 			break;
 			
+		case 4:
+			
+			break;
+			
 		default:
 			
 			System.out.println("Error.");
@@ -193,31 +205,177 @@ public class Tarea3_200715051 {
 		}
 		}while(opcionCal!=4);	
 		
-		break;
+		break;// FIN MENU CONTADOR
 			
-		case 3:
+		case 3://MENU ORDEN NUMEROS------------------------------------------------------------------------------------------------------------
 			
-			System.out.println(
+			do {
+				
+				System.out.println(
+						
+						  "1. Ingresar numero: \n"
+						+ "2. Mostrar orden: \n"
+						+ "3. Regresar al Menu Pricipal"
+								);
+				
+				OpcionCont=entra1.nextInt();
+				
+				switch(OpcionCont) {
+				
+				case 1:
 					
-					  "1. Ingresar numero: \n"
-					+ "2. Mostrar orden: \n"
-					+ "3. Regresar al Menu Pricipal"
-							);
-			break;
-		case 4:
+					System.out.println("Ingrese tres numeros diferentes:");
+					
+					num1=entra1.nextInt();
+					
+					num2=entra1.nextInt();
+					
+					num3=entra1.nextInt();
+					
+					System.out.println("Los numeros han sido ingresados de forma exitosa.");
+					
+					System.out.println();
+					
+					break;
+					
+				case 2:
+					
+					if(num1>num2 && num1>num3) {
+						
+						if(num2<num3) {
+							
+							System.out.println(num1 + "\n" + num3 + "\n" +num2);
+						}
+						
+						else if(num3<num2) {
+							
+							System.out.println(num1 +"\n" + num2 +"\n" + num3);
+							
+						}
+					}
+					
+					else if(num2>num1 && num2>num3) {
+						
+						if(num1<num3) {
+							
+							System.out.println(num2 +"\n"+ num3 +"\n"+num1);
+						}
+						
+						else if(num3<num1) {
+							
+							System.out.println(num2 +"\n" + num1 +"\n" + num3);
+							
+						}
+						
+					}
+					
+					else if(num3>num1 && num3>num2) {
+						
+						if(num1<num2) {
+							
+							System.out.println(num3 +"\n"+ num2 +"\n"+num1);
+						}
+						
+						else if(num2<num1) {
+							
+							System.out.println(num3 +"\n" + num1 +"\n" + num2);
+							
+						}
+					}
+					
+					System.out.println();
+					break;
+					
+					
+				case 3: 
+					
+					break;
+				default:
+					
+					System.out.println("Opcion invalida");
+					
+					break;
+					
+				}
+				
+				
+				
+				}while(OpcionCont!=3);
+			
+			break;// FIN MENU ORDEN NUMEROS
+			
+		case 4://PROMEDIOS---------------------------------------------------------------------------------------------------------------
+			
+				
+			do {
 			
 			System.out.println(
 					  "1. Calcular Promedio: \n"
 					+ "2.Menu Principal."	
 							);
+			
+			opcionProm=entrada.nextInt();
+							
+			int[][] matrix = new int[6][6];
+			
+			if(opcionProm==1) {
+			System.out.println("Ingrese las notas que desea promediar:");
+			
+			for(int m = 0; m<6; m++) {
+				
+				matrix[m][0]= m+1;
+				
+				for(int n = 1;n<5;n++) {
+					
+					matrix[m][n]=entra2.nextInt();
+								
+					}
+					
+				matrix[m][5] =((matrix[m][1]+matrix[m][2]+matrix[m][3]+matrix[m][4])/4);;
+					
+				//System.out.println("el promedio es "+ matrix[m][5]);
+					
+				}			
+				
+			
+			for(int [] promedio:matrix) {
+				
+				for(int imprime: promedio) {
+					
+					System.out.print(imprime + " ");
+					
+				}
+				System.out.println();
+			}
+			
+			System.out.println();
+			
+			}
+			
+
+			else if(opcionProm!=1 && opcionProm!=2){
+				
+				System.out.println("Opcion invalida.");
+			}
+			
+			}while(opcionProm!=2);
+				
+			
+				break;
+			
+		case 5:
+			
 			break;
 			
 		default:
 			
 			System.out.println("Opcion invalida.");
-			break;
+			
+			break;//FIN PROMEDIOS---------------------------------------------------------------------------------------------------------
+			
 			}
 		}while(opcion!=5);
+		
 		
 		System.exit(0);
 	}
